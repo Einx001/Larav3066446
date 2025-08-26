@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adivina el Número</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Juego: Adivina el Número (1 al 70)</h1>
+    <h1>Formulario Adivinar...</h1>
 
-    <!-- Mostramos mensaje si existe -->
-    @if(isset($mensaje))
-        <p><strong>{{ $mensaje }}</strong></p>
-    @endif
+ <form action="{{route('adivinar.procesar')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+        <label for="title">Ingrese un numero del 1 al 70:</label>
+        <input type="number" id="title" name="num" required>
 
-    <!-- Formulario para enviar intentos -->
-    <form action="{{ route('adivinar.procesar') }}" method="POST">
-        @csrf
-        <label for="numIngresado">Ingresa un número:</label>
-        <input type="number" name="numIngresado" id="numIngresado" required>
-        <button type="submit">Probar</button>
-    </form>
-</body>
-</html>
+        <input type="hidden" name="numAleatorio" value="{{ $numAleatorio }}">
+    <br><br>
 
+    <button type="submit">Enviar</button>
+</form>
